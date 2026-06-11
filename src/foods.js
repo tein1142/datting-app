@@ -5,7 +5,7 @@ export const FOODS = [
   { id: 'ramen', emoji: '🍜', label: 'ราเมง' },
   { id: 'pizza', emoji: '🍕', label: 'พิซซ่า' },
   { id: 'cafe', emoji: '☕', label: 'คาเฟ่' },
-  { id: 'kbbq', emoji: '🍖', label: 'ปิ้งย่างเกาหลี' },
+  { id: 'isan', emoji: '🥗', label: 'อาหารอีสาน' },
 ]
 
 export const foodById = (id) => FOODS.find((f) => f.id === id)
