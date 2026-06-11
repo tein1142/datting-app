@@ -2,7 +2,7 @@
 export const FOODS = [
   { id: 'thai', emoji: '🍛', label: 'อาหารไทย' },
   { id: 'shabu', emoji: '🍲', label: 'ชาบู' },
-  { id: 'ramen', emoji: '🍜', label: 'ราเมง' },
+  { id: 'japanese', emoji: '🍣', label: 'อาหารญี่ปุ่น' },
   { id: 'pizza', emoji: '🍕', label: 'พิซซ่า' },
   { id: 'cafe', emoji: '☕', label: 'คาเฟ่' },
   { id: 'isan', emoji: '🥗', label: 'อาหารอีสาน' },

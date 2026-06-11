@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useDatePlan } from '../state.jsx'
+import cryCat from '../assets/cry-cat.jpg'
 
 // ข้อความเปลี่ยนไปเรื่อยๆ ทุกครั้งที่พยายามกด No ให้ขำๆ
 const NO_TAUNTS = [
@@ -56,7 +57,7 @@ export default function AskPage() {
       transition={{ duration: 0.4 }}
     >
       <div className="card">
-        <div className="big-emoji">🥺</div>
+        <img className="ask-cat" src={cryCat} alt="แมวตาละห้อย" />
         <h1>อยากไปกินๆ เที่ยวๆ<br />กับเค้าไหม?</h1>
         <p className="sub">เลือกเลยน้า~ 💕</p>
 
