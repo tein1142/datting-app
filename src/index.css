@@ -26,7 +26,7 @@ body {
   color: var(--text);
   background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 60%, #fff7fb 100%);
   background-attachment: fixed;
-  overflow: hidden; /* ล็อกไม่ให้เลื่อนหน้าจอ — คอนเทนต์ย่อตามจอแทน */
+  overflow: auto; /* allow scrolling on small screens */
 }
 
 .app {
@@ -40,14 +40,12 @@ body {
 .page {
   position: relative;
   z-index: 1;
-  height: 100vh;
-  height: 100dvh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: clamp(10px, 2.2vh, 24px) 16px;
-  overflow: hidden; /* กันไม่ให้เลื่อน */
 }
 
 .card {
@@ -60,6 +58,23 @@ body {
   width: 100%;
   max-width: 420px;
   text-align: center;
+}
+
+/* Mobile layout tweaks */
+@media (max-width: 480px) {
+  .card { padding: 12px 14px; border-radius: 18px; }
+  .card-wide { max-width: 100%; }
+  .btn-yes { font-size: 18px; padding: 12px 28px; }
+  .food-grid { grid-template-columns: repeat(2, 1fr); }
+  .food-card { padding: 10px; }
+  .big-emoji { font-size: clamp(26px, 6.2vh, 44px); }
+  h1 { font-size: clamp(18px, 4.2vh, 24px); }
+}
+
+@media (max-width: 360px) {
+  .food-grid { grid-template-columns: 1fr; }
+  .btn-yes { font-size: 16px; padding: 10px 20px; }
+  .card { padding: 10px 12px; }
 }
 
 .card-wide {
