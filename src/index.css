@@ -207,6 +207,30 @@ h1 {
   box-shadow: 0 0 0 4px rgba(255, 143, 177, 0.2);
 }
 
+/* Date / time input tweaks to avoid overflow on small devices */
+input[type="date"],
+input[type="time"] {
+  max-width: 100%;
+  font-size: clamp(14px, 1.9vh, 16px);
+  padding: clamp(6px, 1.1vh, 10px) 12px;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* Slightly shrink native picker icon on webkit browsers */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-clear-button {
+  transform: scale(0.92);
+}
+
+@media (max-width: 480px) {
+  input[type="date"], input[type="time"] {
+    padding: 8px 10px;
+    font-size: 15px;
+  }
+  .field-label { font-size: 14px; }
+}
+
 /* ---------- food grid ---------- */
 .food-grid {
   display: grid;
