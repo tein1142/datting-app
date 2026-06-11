@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { toPng } from 'html-to-image'
 import { useDatePlan } from '../state.jsx'
 import { foodById } from '../foods.js'
 import catImg from '../assets/cat.png'
@@ -33,34 +32,6 @@ export default function SummaryPage() {
   const selectedFoods = foods.map(foodById).filter(Boolean)
   const thaiDate = formatThaiDate(date)
 
-  const captureRef = useRef(null)
-  const [saving, setSaving] = useState(false)
-  const [saved, setSaved] = useState(false)
-
-  // แคปการ์ดสรุปเป็นรูป PNG แล้วดาวน์โหลด (ไว้ส่งให้แฟนทีหลัง)
-  const saveImage = async () => {
-    if (!captureRef.current || saving) return
-    setSaving(true)
-    try {
-      const dataUrl = await toPng(captureRef.current, {
-        pixelRatio: 2,
-        cacheBust: true,
-        backgroundColor: '#fff2f8',
-      })
-      const link = document.createElement('a')
-      link.download = 'our-date.png'
-      link.href = dataUrl
-      link.click()
-      setSaved(true)
-      setTimeout(() => setSaved(false), 3500)
-    } catch (e) {
-      console.error('save image failed', e)
-      alert('บันทึกรูปไม่สำเร็จ ลองใหม่อีกครั้งน้า 🥲')
-    } finally {
-      setSaving(false)
-    }
-  }
-
   return (
     <motion.main
       className="page center"
@@ -70,7 +41,7 @@ export default function SummaryPage() {
       transition={{ duration: 0.45 }}
     >
       <div className="card">
-        <div className="capture-area" ref={captureRef}>
+        <div className="capture-area">
         <div className="couple-wrap">
           <span className="glow" />
           <img className="cat-photo" src={catImg} alt="แมวถือดอกไม้ให้เธอ" />
@@ -80,7 +51,7 @@ export default function SummaryPage() {
           <span className="sparkle s4">⭐</span>
         </div>
         <h1>นัดเดตเรียบร้อย!</h1>
-        <p className="sub">เจอกานนนน 💕</p>
+        <p className="sub">เดี๋ยวเค้าไปรับนะคับ 💕</p>
 
         <div className="summary-box">
           <div className="summary-row">
@@ -109,14 +80,11 @@ export default function SummaryPage() {
           )}
         </div>
 
-        <p className="closing">ไว้เจอกันน้า ที่รัก~ 💖✨</p>
+        <p className="closing">ไว้เจอกันคับ~ 💖✨</p>
         </div>
 
-        <p className="capture-hint">📸 บันทึกรูปนี้ไว้ แล้วส่งให้แฟนทีหลังน้า~</p>
+        <p className="capture-hint">📸 แคปหน้าจอนี้ไว้ แล้วส่งให้เค้าทีหลังน้า~</p>
         <div className="action-row">
-          <button className="btn btn-capture" onClick={saveImage} disabled={saving}>
-            {saving ? 'กำลังบันทึก...' : saved ? 'บันทึกแล้ว! 🎉' : 'บันทึกรูปหน้านี้ 📸'}
-          </button>
           <button className="btn btn-ghost" onClick={() => navigate('/plan')}>
             แก้ไขนัด ✏️
           </button>
