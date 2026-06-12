@@ -47,7 +47,7 @@ export default function PlanPage() {
     >
       <div className="card card-wide">
         <div className="big-emoji">🥰</div>
-        <h1>ดีใจที่ตอบตงลงคับบ</h1>
+        <h1>ดีใจที่ตอบตกลงคับบ</h1>
         <p className="sub">ไปเท่ววกันนน 😆💕</p>
 
         <section className="field">
